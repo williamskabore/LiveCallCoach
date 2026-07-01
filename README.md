@@ -29,7 +29,7 @@ A production-ready agent assist dashboard that provides real-time transcription,
 winget install Docker.DockerDesktop
 
 # Install Node.js (if not present)
-winget install OpenJS.NodeJS.LTS
+winget install OpenJS.NodeJS.LTS```
 
 # Verify installations
 docker --version
