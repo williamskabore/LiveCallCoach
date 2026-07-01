@@ -34,27 +34,30 @@
 ```powershell
 # Install Docker Desktop
 winget install Docker.DockerDesktop
-
+```
 # Install Node.js (if not present)
+```
 winget install OpenJS.NodeJS.LTS
- 
-Copy
+ ```
 # Verify installations
+```
 docker --version
 node --version
 npm --version
+```
 2. Clone & Configure
  
-Copy
+
 # Clone repository
 git clone https://github.com/williamskabore/LiveCallCoach.git
 cd LiveCallCoach
 
 # Create environment file
+```
 copy .env.example .env
-3. Edit .env file
- 
-Copy
+```
+# 3. Edit .env file
+```
 WHISPER_API_KEY=sk-your-openai-key-here
 DEEPSEEK_API_KEY=sk-your-deepseek-key-here
 REDIS_HOST=redis
@@ -62,20 +65,19 @@ REDIS_PORT=6379
 LOG_LEVEL=INFO
 MAX_RETRIES=3
 RATE_LIMIT=10
-4. Prepare Knowledge Base
+```
+# 4. Prepare Knowledge Base
 Create markdown files in the kb/ directory:
-
- 
-Copy
+```
 # kb/greeting-scripts.md
 ## Standard Opening
 "Thank you for calling [Company]. My name is [Name]. How can I assist you today?"
 
 ## Empathetic Opening
 "I appreciate your patience. Let me help resolve this for you."
-5. Build & Run
+```
+# 5. Build & Run
  
-Copy
 # Build Docker images
 docker-compose build
 
@@ -89,7 +91,6 @@ docker-compose logs -f
 # Open browser to http://localhost:5173
 6. Run Tests
  
-Copy
 # Backend tests
 docker-compose exec backend pytest tests/
 
@@ -113,9 +114,9 @@ Shortcut	Action
 Ctrl+Enter	Submit feedback for current suggestion
 Esc	Dismiss all coach cards
 Ctrl+F	Focus knowledge base search
-🏗 Architecture
+
+# 🏗 Architecture
  
-Copy
 graph TD
     A[Browser Microphone] -->|WebSocket| B[FastAPI Server]
     B --> C[Whisper API - Transcription]
@@ -129,67 +130,67 @@ graph TD
     style D fill:#fbb,stroke:#333,stroke-width::2px
     style E fill:#bff,stroke:#333,stroke-width:2px
     style F fill:#ffb,stroke:#333,stroke-width:2px
-🛠 Production Considerations
-Scaling
+# 🛠 Production Considerations
+# Scaling
 Horizontal scaling: Add more backend containers
 Vertical scaling: Increase Redis memory (recommended 2GB)
 Enterprise: Consider Azure/Google Cloud Speech-to-Text
 Monitoring
  
-Copy
 # Logs
+```
 docker-compose logs -f backend
-
+```
 # Health check
+```
 curl http://localhost:8000/health
-
+```
 # Metrics
 # /metrics endpoint (Prometheus format)
-Security
+# Security
 ✅ All API keys stored in environment variables
 ✅ WebSocket connections limited to allowed origins
 ✅ Rate limiting: 10 API calls/minute/user
 ✅ Input sanitization on all text fields
-🔧 Troubleshooting
-Microphone not working
+
+# 🔧 Troubleshooting
+# Microphone not working
  
-Copy
 # Check browser permissions (Settings > Privacy > Microphone)
 # Test with: https://mozilla.github.io/webrtc-landing/
-Docker issues
+
+# Docker issues
  
-Copy
 # Restart Docker Desktop
 # Reset to factory defaults if needed
 # Check WSL2: wsl --list --verbose
-API rate limits
+
+# API rate limits
  
-Copy
 # Check current usage in logs
 docker-compose logs backend | findstr "rate_limit"
 
 # Reduce rate in .env if needed
-💻 Development
+# 💻 Development
 Hot Reload
 Backend: FastAPI auto auto-reload (set RELOAD=true in .env)
 Frontend: Vite HMR enabled by default
 Knowledge base: Watches kb/ directory every 5 seconds
-Adding New Features
+
+# Adding New Features
 Create feature branch: git checkout -b feature/your-feature
 Update backend services in backend/services/
 Add frontend components in frontend/src/components/
 Write tests in respective tests/ directories
 Submit PR with description and test results
-📄 License
-MIT - See
-LICENSE
-file for details
+# 📄 License
+MIT - See LICENSE file for details
 
 👨‍💻 Support
 Author: Williams R.D. KABORE
 Documentation: /docs directory
 
-Enterprise Support & Setup Assistance:
+# Enterprise Support & Setup Assistance:
 📧
 williams.kabore@welcdn.com
 
