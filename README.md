@@ -1,26 +1,33 @@
 <p align="center">
-  <img src="https://s13.gifyu.com/images/bdgbc.png" alt="Description of image" width="600"/>
+  <img src="https://s13.gifyu.com/images/bdgbc.png" alt="Real-Time Call Coach Dashboard" width="600"/>
 </p>
-# Real-Time Call Coach 🎯 by Williams KABORE
 
-A production-ready agent assist dashboard that provides real-time transcription, AI-powered suggestions, and knowledge base integration for contact center agents.
+<h1 align="center">Real-Time Call Coach 🎯 by Williams KABORE</h1>
 
-## Features
+<p align="center">
+  <em>A production-ready agent assist dashboard providing real-time transcription, AI-powered suggestions, and knowledge base integration for contact center agents.</em>
+</p>
 
-- **Real-Time Transcription**: Browser microphone → Whisper API → Live transcript display
-- **AI Coach**: DeepSeek V3 analyzes conversations and pushes contextual suggestions
-- **Knowledge Base**: Hot-reloadable markdown files with search
-- **Dashboard**: Clean React UI with live updates via WebSocket
-- **Production Ready**: Docker, logging, rate limiting, error handling
+---
 
-## Prerequisites
+## ✨ Features
 
-- **Windows 10** with PowerShell 5.1+
-- **Docker Desktop** for Windows (enable WSL2 backend)
-- **Node.js** 18+ (for local frontend development only)
-- **Git** (optional, for version control)
+- **Real-Time Transcription** - Browser microphone → Whisper API → Live transcript display
+- **AI Coach** - DeepSeek V3 analyzes conversations and pushes contextual suggestions
+- **Knowledge Base** - Hot-reloadable markdown files with search
+- **Dashboard** - Clean React UI with live updates via WebSocket
+- **Production Ready** - Docker, logging, rate limiting, error handling
 
-## Quick Start (Windows 10)
+## 📋 Prerequisites
+
+| Requirement | Version/Details |
+|-------------|-----------------|
+| **Windows 10** | PowerShell 5.1+ |
+| **Docker Desktop** | Enable WSL2 backend |
+| **Node.js** | 18+ (local frontend development only) |
+| **Git** | Optional, for version control |
+
+## 🚀 Quick Start (Windows 10)
 
 ### 1. Install Dependencies
 
@@ -29,24 +36,25 @@ A production-ready agent assist dashboard that provides real-time transcription,
 winget install Docker.DockerDesktop
 
 # Install Node.js (if not present)
-winget install OpenJS.NodeJS.LTS```
-
+winget install OpenJS.NodeJS.LTS
+ 
+Copy
 # Verify installations
 docker --version
 node --version
 npm --version
-
 2. Clone & Configure
  
+Copy
 # Clone repository
 git clone https://github.com/williamskabore/LiveCallCoach.git
 cd LiveCallCoach
 
 # Create environment file
 copy .env.example .env
-
 3. Edit .env file
  
+Copy
 WHISPER_API_KEY=sk-your-openai-key-here
 DEEPSEEK_API_KEY=sk-your-deepseek-key-here
 REDIS_HOST=redis
@@ -54,19 +62,20 @@ REDIS_PORT=6379
 LOG_LEVEL=INFO
 MAX_RETRIES=3
 RATE_LIMIT=10
-
 4. Prepare Knowledge Base
 Create markdown files in the kb/ directory:
 
+ 
+Copy
 # kb/greeting-scripts.md
 ## Standard Opening
 "Thank you for calling [Company]. My name is [Name]. How can I assist you today?"
 
 ## Empathetic Opening
 "I appreciate your patience. Let me help resolve this for you."
-
 5. Build & Run
  
+Copy
 # Build Docker images
 docker-compose build
 
@@ -78,15 +87,15 @@ docker-compose logs -f
 
 # Access dashboard
 # Open browser to http://localhost:5173
-
 6. Run Tests
  
+Copy
 # Backend tests
 docker-compose exec backend pytest tests/
 
 # Frontend tests
 docker-compose exec frontend npm test
-Usage Guide
+📖 Usage Guide
 Starting a Coaching Session
 Click "Start Coaching" button
 Grant microphone permission when prompted
@@ -96,69 +105,73 @@ Receive AI suggestions on the right panel
 Search knowledge base using the search bar
 Understanding Coach Cards
 Priority	Color	Action Needed
-High	Red	Immediate attention
-Medium	Yellow	Consider implementing
-Low	Blue	Optional suggestion
+High	🔴 Red	Immediate attention
+Medium	🟡 Yellow	Consider implementing
+Low	🔵 Blue	Optional suggestion
 Keyboard Shortcuts
-Ctrl+Enter: Submit feedback for current suggestion
-Esc: Dismiss all coach cards
-Ctrl+F: Focus knowledge base search
-Architecture
+Shortcut	Action
+Ctrl+Enter	Submit feedback for current suggestion
+Esc	Dismiss all coach cards
+Ctrl+F	Focus knowledge base search
+🏗 Architecture
  
-
-Browser Microphone → WebSocket → FastAPI Server
-                                        ↓
-                              ┌───────────────┐
-                              │  Whisper API   │
-                              │  (Transcription)│
-                              └───────┬───────┘
-                                      ↓
-                              ┌───────────────┐
-                              │  DeepSeek V3   │
-                              │  (Analysis)    │
-                              └───────┬───────┘
-                                      ↓
-                              ┌───────────────┐
-                              │  Redis Cache   │
-                              │  (State)       │
-                              └───────┬───────┘
-                                      ↓
-                              WebSocket → React Dashboard
-Production Considerations
+Copy
+graph TD
+    A[Browser Microphone] -->|WebSocket| B[FastAPI Server]
+    B --> C[Whisper API - Transcription]
+    C --> D[DeepSeek V3 - Analysis]
+    D --> E[Redis Cache - State]
+    E -->|WebSocket| F[React Dashboard]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#bfb,stroke:#333,stroke-width:2px
+    style D fill:#fbb,stroke:#333,stroke-width::2px
+    style E fill:#bff,stroke:#333,stroke-width:2px
+    style F fill:#ffb,stroke:#333,stroke-width:2px
+🛠 Production Considerations
 Scaling
 Horizontal scaling: Add more backend containers
 Vertical scaling: Increase Redis memory (recommended 2GB)
-Consider Azure/Google Cloud Speech-to-Text for enterprise
+Enterprise: Consider Azure/Google Cloud Speech-to-Text
 Monitoring
-Logs: docker-compose logs - -f backend
-Health check: curl http://localhost:8000/health
-Metrics: /metrics endpoint (Prometheus format)
-Security
-All API keys stored in environment variables
-WebSocket connections limited to allowed origins
-Rate limiting: 10 API calls/minute/user
-Input sanitization on all text fields
+ 
+Copy
+# Logs
+docker-compose logs -f backend
 
-Troubleshooting:
+# Health check
+curl http://localhost:8000/health
+
+# Metrics
+# /metrics endpoint (Prometheus format)
+Security
+✅ All API keys stored in environment variables
+✅ WebSocket connections limited to allowed origins
+✅ Rate limiting: 10 API calls/minute/user
+✅ Input sanitization on all text fields
+🔧 Troubleshooting
 Microphone not working
  
+Copy
 # Check browser permissions (Settings > Privacy > Microphone)
 # Test with: https://mozilla.github.io/webrtc-landing/
-
 Docker issues
  
+Copy
 # Restart Docker Desktop
 # Reset to factory defaults if needed
 # Check WSL2: wsl --list --verbose
-
 API rate limits
  
+Copy
 # Check current usage in logs
 docker-compose logs backend | findstr "rate_limit"
+
 # Reduce rate in .env if needed
-Development
+💻 Development
 Hot Reload
-Backend: FastAPI auto-reload (set RELOAD=true in .env)
+Backend: FastAPI auto auto-reload (set RELOAD=true in .env)
 Frontend: Vite HMR enabled by default
 Knowledge base: Watches kb/ directory every 5 seconds
 Adding New Features
@@ -167,14 +180,17 @@ Update backend services in backend/services/
 Add frontend components in frontend/src/components/
 Write tests in respective tests/ directories
 Submit PR with description and test results
+📄 License
+MIT - See
+LICENSE
+file for details
 
-License
-MIT - See LICENSE file for details
-
-Support
+👨‍💻 Support
 Author: Williams R.D. KABORE
 Documentation: /docs directory
 
 Enterprise Support & Setup Assistance:
+📧
 williams.kabore@welcdn.com
 
+<p align="center"> <sub>Built with ❤️ for contact center agents worldwide</sub> </p>
