@@ -141,7 +141,7 @@ docker-compose logs -f backend
 curl http://localhost:8000/health
 ```
 # Metrics
-# /metrics endpoint (Prometheus format)
+  /metrics endpoint (Prometheus format)
 # Security
 ✅ All API keys stored in environment variables<br>
 ✅ WebSocket connections limited to allowed origins<br>
@@ -155,40 +155,38 @@ curl http://localhost:8000/health
  Test with: https://mozilla.github.io/webrtc-landing/
 
 # Docker issues
- 
   Restart Docker Desktop
   Reset to factory defaults if needed
   Check WSL2: wsl --list --verbose
 
 # API rate limits
- 
-# Check current usage in logs
-docker-compose logs backend | findstr "rate_limit"
+  Check current usage in logs
+  docker-compose logs backend | findstr "rate_limit"
 
 # Reduce rate in .env if needed
 # 💻 Development
-Hot Reload
-Backend: FastAPI auto auto-reload (set RELOAD=true in .env)
-Frontend: Vite HMR enabled by default
-Knowledge base: Watches kb/ directory every 5 seconds
+  Hot Reload
+  Backend: FastAPI auto auto-reload (set RELOAD=true in .env)
+  Frontend: Vite HMR enabled by default
+  Knowledge base: Watches kb/ directory every 5 seconds
 
 # Adding New Features
-Create feature branch: git checkout -b feature/your-feature<br>
-Update backend services in backend/services/<br>
-Add frontend components in frontend/src/components/<br>
-Write tests in respective tests/ directories<br>
-Submit PR with description and test results<br>
+  Create feature branch: git checkout -b feature/your-feature<br>
+  Update backend services in backend/services/<br>
+  Add frontend components in frontend/src/components/<br>
+  Write tests in respective tests/ directories<br>
+  Submit PR with description and test results<br>
 
 # 📄 License
-MIT - See LICENSE file for details
+  MIT - See LICENSE file for details
 
 👨‍💻 Support
-Author: Williams R.D. KABORE
-Documentation: /docs directory
+  Author: Williams R.D. KABORE
+  Documentation: /docs directory
 
 # Enterprise Support & Setup Assistance:
-📧
-williams.kabore@welcdn.com
+  📧
+  williams.kabore@welcdn.com
 
 <p align="center"> <sub>Built with ❤️ for contact center agents worldwide</sub> </p>
 </center>
