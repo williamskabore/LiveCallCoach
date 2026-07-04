@@ -88,9 +88,9 @@ docker-compose up -d
 docker-compose logs -f
 
 # Access dashboard
-# Open browser to http://localhost:5173
-6. Run Tests
- 
+  Open browser to http://localhost:5173
+
+# 6. How to Run Tests
 # Backend tests
 docker-compose exec backend pytest tests/
 
@@ -142,6 +142,7 @@ curl http://localhost:8000/health
 ```
 # Metrics
   /metrics endpoint (Prometheus format)
+  
 # Security
 ✅ All API keys stored in environment variables<br>
 ✅ WebSocket connections limited to allowed origins<br>
