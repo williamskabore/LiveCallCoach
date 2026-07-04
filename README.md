@@ -1,4 +1,4 @@
-<p align="center">
+<center><p align="center">
   <img src="https://s13.gifyu.com/images/bdgbc.png" alt="Real-Time Call Coach Dashboard" width="600"/>
 </p>
 
@@ -45,7 +45,7 @@ docker --version
 node --version
 npm --version
 ```
-2. Clone & Configure
+# 2. Clone & Configure
  
 
 # Clone repository
@@ -127,9 +127,9 @@ graph TD
 
 # 🛠 Production Considerations
 # Scaling
-Horizontal scaling: Add more backend containers
-Vertical scaling: Increase Redis memory (recommended 2GB)
-Enterprise: Consider Azure/Google Cloud Speech-to-Text
+Horizontal scaling: Add more backend containers<br>
+Vertical scaling: Increase Redis memory (recommended 2GB)<br>
+Enterprise: Consider Azure/Google Cloud Speech-to-Text<br>
 Monitoring
  
 # Logs
@@ -143,22 +143,22 @@ curl http://localhost:8000/health
 # Metrics
 # /metrics endpoint (Prometheus format)
 # Security
-✅ All API keys stored in environment variables
-✅ WebSocket connections limited to allowed origins
-✅ Rate limiting: 10 API calls/minute/user
-✅ Input sanitization on all text fields
+✅ All API keys stored in environment variables<br>
+✅ WebSocket connections limited to allowed origins<br>
+✅ Rate limiting: 10 API calls/minute/user<br>
+✅ Input sanitization on all text fields<br>
 
 # 🔧 Troubleshooting
 # Microphone not working
  
-# Check browser permissions (Settings > Privacy > Microphone)
-# Test with: https://mozilla.github.io/webrtc-landing/
+ Check browser permissions (Settings > Privacy > Microphone)
+ Test with: https://mozilla.github.io/webrtc-landing/
 
 # Docker issues
  
-# Restart Docker Desktop
-# Reset to factory defaults if needed
-# Check WSL2: wsl --list --verbose
+  Restart Docker Desktop
+  Reset to factory defaults if needed
+  Check WSL2: wsl --list --verbose
 
 # API rate limits
  
@@ -173,11 +173,11 @@ Frontend: Vite HMR enabled by default
 Knowledge base: Watches kb/ directory every 5 seconds
 
 # Adding New Features
-Create feature branch: git checkout -b feature/your-feature
-Update backend services in backend/services/
-Add frontend components in frontend/src/components/
-Write tests in respective tests/ directories
-Submit PR with description and test results
+Create feature branch: git checkout -b feature/your-feature<br>
+Update backend services in backend/services/<br>
+Add frontend components in frontend/src/components/<br>
+Write tests in respective tests/ directories<br>
+Submit PR with description and test results<br>
 
 # 📄 License
 MIT - See LICENSE file for details
@@ -191,3 +191,4 @@ Documentation: /docs directory
 williams.kabore@welcdn.com
 
 <p align="center"> <sub>Built with ❤️ for contact center agents worldwide</sub> </p>
+</center>
